@@ -1,0 +1,17 @@
+<table>
+  <thead>
+  <tr>
+    <th *ngFor="let column of displayedColumns">{{column}}</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of dataSource">
+      <td>{{row.age}}</td>
+      <td>{{row.males}}</td>
+      <td>{{row.year}}</td>
+      <td>{{row.country}}</td>
+      <td>{{row.females}}</td>
+      <td>{{row.total}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <div class="links-container">
+    <a [routerLink]="['/population']" routerLinkActive="active">Population</a>
+    <a [routerLink]="['/chart']" routerLinkActive="active">Chart</a>
+    <a [routerLink]="['/calculator']" routerLinkActive="active">Calculator</a>
+  </div>
+</mat-toolbar>
+<body>
+  <router-outlet></router-outlet>
+</body>
+<footer></footer>

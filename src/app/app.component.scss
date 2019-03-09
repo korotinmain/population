@@ -1,0 +1,21 @@
+.links-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  a {
+    cursor: pointer;
+    height: 100%;
+    outline: none;
+    text-decoration: none;
+    color: #ffffff;
+
+    &.active {
+      color: #fffc29;
+    }
+  }
+}
+
+body {
+  height: calc(100vh - 64px);
+}

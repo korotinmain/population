@@ -1,0 +1,46 @@
+<form class="form-container" [formGroup]="form" (submit)="getInfo()">
+  <mat-form-field>
+    <mat-select formControlName="sex" placeholder="Enter your sex" required>
+      <mat-option *ngFor="let sex of sexSelect" [value]="sex">
+        {{sex}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="country" placeholder="Enter your country" required>
+      <mat-option *ngFor="let country of countriesList" [value]="country">
+        {{country}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input type="date" matInput placeholder="Enter the date" formControlName="date" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Enter your age" formControlName="age" required>
+  </mat-form-field>
+  <button
+    [disabled]="form.invalid"
+    type="submit" mat-raised-button color="primary">Get Info</button>
+</form>
+
+
+<section *ngIf="remainingData">
+  <div class="remaining-info">
+    {{remainingData.remaining_life_expectancy | number}} years expectancy
+  </div>
+</section>
+
+
+<section class="queries-container" *ngIf="lastQueries.length">
+  <p class="last-result-text">Last results:</p>
+  <div class="last-results">
+    <div class='list-container' *ngFor="let query of lastQueries">
+        <span class="list-item">Date: {{query.date}}</span>
+        <span class="list-item">Country: {{query.country}}</span>
+        <span class="list-item">Age: {{query.age}}</span>
+        <span class="list-item">Sex: {{query.sex}}</span>
+        <span class="list-item">Remaining: {{query.remaining_life_expectancy}}</span>
+    </div>
+  </div>
+</section>
