@@ -11,11 +11,11 @@ import {SEX_SELECT} from "./constants/population.constants";
 })
 export class PopulationCalculatorComponent implements OnInit {
 
-  private form: FormGroup;
-  private remainingData: RemainingInfoType;
-  private countriesList: Array<string> = [];
-  private sexSelect = SEX_SELECT;
-  private lastQueries: Array<RemainingInfoType> = [];
+  form: FormGroup;
+  remainingData: RemainingInfoType;
+  countriesList: Array<string> = [];
+  sexSelect = SEX_SELECT;
+  lastQueries: Array<RemainingInfoType> = [];
 
   constructor(private fb: FormBuilder,
               private calculatorService: CalculatorService) {
@@ -30,16 +30,7 @@ export class PopulationCalculatorComponent implements OnInit {
     this.getCountries();
   }
 
-  private initForm() {
-    this.form = this.fb.group({
-      sex: [''],
-      country: [''],
-      date: [''],
-      age: ['']
-    });
-  }
-
-  private getInfo() {
+  getInfo() {
     this.calculatorService.calculateExpectancy(this.form.value)
       .subscribe((data: RemainingInfoType) => {
         this.remainingData = data;
@@ -51,6 +42,15 @@ export class PopulationCalculatorComponent implements OnInit {
         }
         window.localStorage.setItem('lastQueries', JSON.stringify(this.lastQueries));
       });
+  }
+
+  private initForm() {
+    this.form = this.fb.group({
+      sex: [''],
+      country: [''],
+      date: [''],
+      age: ['']
+    });
   }
 
   private getCountries() {
